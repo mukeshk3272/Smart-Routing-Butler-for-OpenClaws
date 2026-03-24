@@ -92,6 +92,10 @@ graph TD
 |:---:|:---:|
 | <img src="./docs/images/screenshot-ai-wizard.png" width="480" /> | <img src="./docs/images/screenshot-request-logs.png" width="480" /> |
 
+| Raw JSON Editor |
+|:---:|
+| <img src="./docs/images/screenshot-raw-json.png" width="480" /> |
+
 </div>
 
 ---

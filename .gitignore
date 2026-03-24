@@ -57,7 +57,8 @@ router/wheels/*.whl
 
 # 仅推送代码：不提交 Cursor 规则与项目文档
 .cursor/
-docs/
+docs/*
+!docs/images/
 BRD/
 商业分析/
 探讨/
