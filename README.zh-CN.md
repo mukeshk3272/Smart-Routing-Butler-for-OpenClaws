@@ -1,28 +1,28 @@
 <div align="center">
 
-<img src="./docs/images/hero-banner.jpg" alt="Smart Router Butler" width="100%" />
+<img src="./docs/images/hero-banner.jpg" alt="Smart Routing Butler" width="100%" />
 
-# <img src="./docs/images/brand-icon.png" alt="" width="36" height="36" /> Smart Router Butler
+# <img src="./docs/images/brand-icon.png" alt="" width="36" height="36" /> Smart Routing Butler
 
 **一个接口，万模随心。你的本地 AI 智能路由管家。**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![CI](https://img.shields.io/github/actions/workflow/status/Moonaria123/smart-router-butler/ci.yml?branch=main&label=CI&logo=github)](https://github.com/Moonaria123/smart-router-butler/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/Moonaria123/Smart-Routing-Butler-for-OpenClaws/ci.yml?branch=main&label=CI&logo=github)](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/actions/workflows/ci.yml)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
-[![GitHub stars](https://img.shields.io/github/stars/Moonaria123/smart-router-butler?style=social)](https://github.com/Moonaria123/smart-router-butler/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/Moonaria123/Smart-Routing-Butler-for-OpenClaws?style=social)](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/stargazers)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/Moonaria123/smart-router-butler)](https://github.com/Moonaria123/smart-router-butler/commits)
-[![GitHub issues](https://img.shields.io/github/issues/Moonaria123/smart-router-butler)](https://github.com/Moonaria123/smart-router-butler/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Moonaria123/Smart-Routing-Butler-for-OpenClaws)](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/commits)
+[![GitHub issues](https://img.shields.io/github/issues/Moonaria123/Smart-Routing-Butler-for-OpenClaws)](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 [**快速开始**](#-快速开始自托管) · [**核心特性**](#-核心特性) · [**配置指南**](#%EF%B8%8F-配置说明摘要) · [**安全与隐私**](#%EF%B8%8F-安全与隐私)
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-*Smart Router Butler 是一套 100% 本地运行、可自托管的 OpenAI 兼容 API 智能路由器，专为 AI Agent（OpenClaw、Cursor、Continue 等）和开发者工具设计。它在成本、延迟与质量之间自动权衡，让你只需对接一个端点，即可无缝调度云端大模型与本地小模型。*
+*Smart Routing Butler 是一套 100% 本地运行、可自托管的 OpenAI 兼容 API 智能路由器，专为 AI Agent（OpenClaw、Cursor、Continue 等）和开发者工具设计。它在成本、延迟与质量之间自动权衡，让你只需对接一个端点，即可无缝调度云端大模型与本地小模型。*
 
 </div>
 
@@ -31,7 +31,7 @@
 <details>
 <summary><strong>📑 目录</strong></summary>
 
-- [💡 为什么需要 Smart Router Butler？](#-为什么需要-smart-router-butler)
+- [💡 为什么需要 Smart Routing Butler？](#-为什么需要-smart-routing-butler)
 - [✨ 核心特性](#-核心特性)
 - [📸 界面预览](#-界面预览)
 - [🎯 规则创建 — 三种方式](#-规则创建--三种方式构建你的路由策略)
@@ -54,7 +54,7 @@
 
 ---
 
-## 💡 为什么需要 Smart Router Butler？
+## 💡 为什么需要 Smart Routing Butler？
 
 在使用 AI Agent（OpenClaw、Cursor、Continue 等）和 IDE 辅助编程的日常工作中，我们经常遇到这些痛点：
 
@@ -62,9 +62,9 @@
 - 🧱 **死板的全局配置**：无法根据任务类型（代码补全、长文总结、多步推理）灵活分配最合适的模型。
 - 📦 **黑盒与脆弱性**：路由逻辑不透明，单一模型服务不可用时，整个代理工作流直接崩溃。
 
-**Smart Router Butler** 将「选哪个模型」变成了一个**可策略化、可热更新**的配置问题。它作为你的本地代理层，接管所有 LLM 请求，并根据你设定的规则和语义智能分发。
+**Smart Routing Butler** 将「选哪个模型」变成了一个**可策略化、可热更新**的配置问题。它作为你的本地代理层，接管所有 LLM 请求，并根据你设定的规则和语义智能分发。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## ✨ 核心特性
 
@@ -77,7 +77,7 @@
 - 🔒 **100% 数据掌控** — 完全自托管，数据不下车；API Key 采用 AES-256-GCM 加密存储，拒绝第三方网关的隐私风险。
 - ⚡ **极致性能** — L1 规则引擎内存同步匹配（<2ms），全程支持 SSE 流式透传，无感接入。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 📸 界面预览
 
@@ -157,11 +157,11 @@
 </div>
 </details>
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🎯 规则创建 — 三种方式构建你的路由策略
 
-Smart Router Butler 提供三种创建路由规则的方式，从完全手动到完全 AI 驱动，可根据你的偏好自由选择和混合使用。
+Smart Routing Butler 提供三种创建路由规则的方式，从完全手动到完全 AI 驱动，可根据你的偏好自由选择和混合使用。
 
 ### 1. 自定义规则编辑器
 
@@ -219,11 +219,11 @@ Smart Router Butler 提供三种创建路由规则的方式，从完全手动到
 
 非常适合首次部署 — 从零规则到完整可运行的路由策略，不到 2 分钟。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🔌 OpenAI 兼容本地代理
 
-Smart Router Butler 专为 **OpenClaw**、**Cursor**、**Continue**、**ChatBox** 等 AI Agent 和开发者工具设计。接入方式：**零插件、零 SDK 修改** — 填入本地 URL 和 Token 即可使用。
+Smart Routing Butler 专为 **OpenClaw**、**Cursor**、**Continue**、**ChatBox** 等 AI Agent 和开发者工具设计。接入方式：**零插件、零 SDK 修改** — 填入本地 URL 和 Token 即可使用。
 
 ### 工作原理
 
@@ -255,7 +255,7 @@ Model:     auto          （由路由器智能决策）
 
 **所有流量在本地转发**：`Agent → localhost:8080 → 上游 Provider API`。代理运行在你的机器或 Docker 主机上，请求不经过任何第三方网关或外部中转节点。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🔍 路由层级详解
 
@@ -307,7 +307,7 @@ Model:     auto          （由路由器智能决策）
 
 若所有层级均未命中，系统从数据库中选取**第一个启用的模型**作为默认目标，并异步递增 `L3_FALLBACK` 计数器以便在控制台中监控。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🏗️ 架构概览
 
@@ -339,7 +339,7 @@ graph TD
 
 </details>
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🚀 快速开始（自托管）
 
@@ -357,8 +357,8 @@ graph TD
 1. **克隆**
 
    ```bash
-   git clone https://github.com/Moonaria123/smart-router-butler.git
-   cd smart-router-butler
+   git clone https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws.git
+   cd Smart-Routing-Butler-for-OpenClaws
    ```
 
 2. **环境变量**
@@ -389,7 +389,7 @@ graph TD
 
 在 `proxy/`、`dashboard/` 执行 `npm ci` 时，`.npmrc` 仅影响**依赖包**下载源，**不能**替代 `git clone`。Dockerfile 会复制 `.npmrc`；Router 使用 `pip install -r requirements.txt`。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## ⚙️ 配置说明（摘要）
 
@@ -402,11 +402,11 @@ graph TD
 
 **切勿**将 `.env`、API Key 或生产连接串提交到 Git。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🔀 与其它方案的差异
 
-| 维度 | 典型云端聚合网关 | Smart Router Butler |
+| 维度 | 典型云端聚合网关 | Smart Routing Butler |
 |------|------------------|---------------------|
 | **接入方式** | 需要安装专用插件、浏览器扩展或 SDK 封装 | **标准 OpenAI 兼容端点** — 填入本地 URL + API Key 即可使用，无需任何插件 |
 | **数据隐私** | 流量经第三方中转，存在泄露风险 | **100% 自托管**，数据在本地网络内转发 |
@@ -415,7 +415,7 @@ graph TD
 | **合规性** | 依赖供应商条款，受限于地域 | **可部署在自有网络**，满足最严格的企业合规要求 |
 | **成本控制** | 平台抽成或固定月费 | **零平台费**，按需路由最大化榨干免费/廉价模型价值 |
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 📂 仓库结构（节选）
 
@@ -426,7 +426,7 @@ graph TD
 | `dashboard/` | Next.js：规则、Provider、日志 |
 | `contracts/` | 服务间契约 |
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🛠️ 开发与健康检查（维护者）
 
@@ -441,7 +441,7 @@ python -m mypy app/ --strict && python -m ruff check app/
 npm run type-check && npm run lint
 ```
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🗺️ 路线图
 
@@ -454,9 +454,9 @@ npm run type-check && npm run lint
 - [ ] API Key 轮换与生命周期管理
 - [ ] Prometheus / Grafana 指标导出
 
-> 有功能建议？欢迎 [提交 Issue](https://github.com/Moonaria123/smart-router-butler/issues) 描述你的使用场景。
+> 有功能建议？欢迎 [提交 Issue](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues) 描述你的使用场景。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## ⚖️ 开源治理与合规
 
@@ -469,7 +469,7 @@ npm run type-check && npm run lint
 
 参与 Issue、PR、讨论前请阅读 **行为准则**。维护者保留对破坏性、骚扰性内容采取管理措施的权利。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🛡️ 安全与隐私
 
@@ -477,13 +477,13 @@ npm run type-check && npm run lint
 - **部署与数据**：本软件**自托管**运行；用户提示词、响应、日志与密钥**由部署者**在自有基础设施上管理；**请自行**审阅与上游 LLM 提供商的服务条款及数据驻留政策。  
 - **供应链**：建议在生产使用锁定版本的镜像与依赖（`package-lock.json`、`requirements.txt`），并关注依赖安全公告。  
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🤝 贡献
 
 欢迎 Issue 与 Pull Request，详见 [**CONTRIBUTING.md**](CONTRIBUTING.md)。贡献即表示你同意 [**CODE_OF_CONDUCT.md**](CODE_OF_CONDUCT.md) 与 [**LICENSE**](LICENSE) 下的许可安排。
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 📜 许可证与免责声明
 
@@ -491,11 +491,11 @@ npm run type-check && npm run lint
 - **按原样提供（AS IS）**：不作适销性、特定用途适用性、非侵权等明示或默示担保；**使用本软件的风险由使用者自行承担**。  
 - **间接损害**：在法律允许范围内，作者与贡献者不对任何间接、偶然、特殊或后果性损害承担责任。  
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 🙏 致谢
 
-Smart Router Butler 基于以下优秀的开源项目构建：
+Smart Routing Butler 基于以下优秀的开源项目构建：
 
 - [Next.js](https://nextjs.org/) — Dashboard 使用的 React 框架
 - [Fastify](https://fastify.dev/) / [Express](https://expressjs.com/) — Proxy 使用的 Node.js 服务框架
@@ -505,7 +505,7 @@ Smart Router Butler 基于以下优秀的开源项目构建：
 - [Redis](https://redis.io/) — 内存缓存
 - [PostgreSQL](https://www.postgresql.org/) — 持久化存储
 
-<p align="right"><a href="#-smart-router-butler">⬆ 回到顶部</a></p>
+<p align="right"><a href="#-smart-routing-butler">⬆ 回到顶部</a></p>
 
 ## 📚 相关阅读
 
