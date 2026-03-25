@@ -18,7 +18,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-*Smart Router Butler is a 100% self-hosted, OpenAI-compatible API smart router. It automatically balances cost, latency, and quality — connect to a single endpoint and seamlessly dispatch requests across cloud LLMs and local models.*
+*Smart Router Butler is a 100% self-hosted, OpenAI-compatible API smart router purpose-built for AI agents (OpenClaw, Cursor, Continue, etc.) and developer tools. It automatically balances cost, latency, and quality — connect to a single endpoint and seamlessly dispatch requests across cloud LLMs and local models.*
 
 </div>
 
@@ -26,7 +26,7 @@
 
 ## Why Smart Router Butler?
 
-When using AI agents and IDE-assisted coding daily, we constantly hit these pain points:
+When using AI agents (OpenClaw, Cursor, Continue, etc.) and IDE-assisted coding daily, we constantly hit these pain points:
 
 - **Steep API costs** — Whether it's a simple spell check or complex architecture design, tools always use default models which may not at the right price.
 - **Rigid global config** — No way to assign the right model per task type (code completion, long-form summarization, multi-step reasoning).
@@ -38,7 +38,9 @@ When using AI agents and IDE-assisted coding daily, we constantly hit these pain
 
 ## Core Features
 
-- **Multi-layer intelligent routing** — Pioneering L1 (rules) + L2 (semantic) + L3 (local model arbitration) three-tier decision chain for precise task-to-model matching.
+- **Drop-in OpenAI-compatible proxy** — Exposes standard `POST /v1/chat/completions` and `GET /v1/models` endpoints on your local network. Any tool that supports OpenAI API (OpenClaw, Cursor, Continue, ChatBox, etc.) works out of the box — just set the base URL and API token. **No plugins, no browser extensions, no SDK changes.** All traffic stays on your local network and never passes through any external gateway.
+- **Multi-layer intelligent routing** — L0 (exact cache) + L0.5 (semantic cache) + L1 (user-defined rules) + L2 (semantic matching) + L3 (local model arbitration) — five-layer decision chain for precise task-to-model matching. See [Routing Layers Deep Dive](#-routing-layers-deep-dive) for details.
+- **Flexible rule creation** — Define your own L1 routing rules via a visual editor, or let AI do it for you: describe your intent in natural language, or use the AI questionnaire wizard to auto-generate a complete rule set in minutes.
 - **Significant cost reduction** — Offload simple tasks to local models or cheap APIs; reserve flagship models for complex tasks only.
 - **High availability & auto-fallback** — Built-in circuit breaker and fallback chains. When the primary model times out or errors, traffic automatically shifts to backups.
 - **Full observability** — Beautiful Next.js web dashboard with request logs, token usage, rule hit analysis at a glance.
@@ -109,7 +111,111 @@ Perfect for first-time setup — go from zero rules to a fully operational routi
 
 ---
 
-## Architecture & Routing Decision Chain
+## OpenAI-Compatible Local Proxy
+
+Smart Router Butler is purpose-built for AI agents like **OpenClaw**, **Cursor**, **Continue**, **ChatBox**, and any tool that speaks the OpenAI API protocol. Integration requires **zero plugins and zero SDK modifications** — configure a local URL and token, and you're done.
+
+### How it works
+
+The proxy (Node.js, default port `8080`) exposes two standard OpenAI-compatible endpoints on your local network:
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/v1/chat/completions` | `POST` | Chat completions (streaming and non-streaming) |
+| `/v1/models` | `GET` | List all available models (includes a synthetic `auto` model for smart routing) |
+
+**Client configuration (any OpenAI-compatible tool):**
+
+```
+Base URL:  http://localhost:8080/v1
+API Key:   <token created in the Dashboard → API Tokens page>
+Model:     auto          (let the router decide)
+           — or —
+           Provider/model (e.g. openai/gpt-4o, to bypass routing)
+```
+
+### What happens under the hood
+
+1. Your agent sends a standard `POST /v1/chat/completions` request with `Authorization: Bearer <token>`.
+2. The proxy validates the token (SHA-256 hashed lookup in PostgreSQL, cached in Redis for 60s).
+3. If `model` = `auto`, the request enters the [five-layer routing chain](#-routing-layers-deep-dive). If a specific model is given, it goes directly to that provider.
+4. The proxy resolves the target provider, decrypts the stored API key (AES-256-GCM), and forwards the request to the upstream provider API.
+5. For streaming (`stream: true`), SSE chunks are relayed in real-time (`for await … res.write(chunk)`) — no buffering, no extra latency.
+6. For non-streaming responses, the proxy rewrites the `model` field to the actual target and caches the result.
+
+**All traffic stays local**: `Agent → localhost:8080 → upstream provider API`. The proxy runs on your machine or your Docker host; no request is rerouted through any third-party gateway or external relay.
+
+---
+
+## Routing Layers Deep Dive
+
+When `model` is set to `auto`, the request passes through five decision layers in order. The first layer to produce a match wins. Each miss passes control to the next layer.
+
+```mermaid
+graph TD
+    Req["Incoming Request"] --> L0{"L0: Exact Cache"}
+    L0 -->|"hit (Redis GET)"| Done["Return cached response"]
+    L0 -->|miss| L05{"L0.5: Semantic Cache"}
+    L05 -->|"hit (cosine >= 0.95)"| Done
+    L05 -->|miss| L1{"L1: Rule Engine"}
+    L1 -->|"hit (user rules)"| Resolve["Resolve provider + dispatch"]
+    L1 -->|miss| L2{"L2: Semantic Route"}
+    L2 -->|"hit (cosine >= 0.85)"| Resolve
+    L2 -->|miss| L3{"L3: Local Model Arbiter"}
+    L3 -->|match| Resolve
+    L3 -->|miss| Fallback["Fallback: first enabled model"]
+    Fallback --> Resolve
+```
+
+### L0 — Exact Cache
+
+- **Key**: `exact:<SHA256(model + messages_json)>`
+- **Storage**: Redis `GET` / `SET EX`; default TTL 24h.
+- **Speed**: Sub-millisecond Redis lookup.
+- **When it fires**: Identical request (same model + same messages) seen before and not expired.
+
+### L0.5 — Semantic Cache
+
+- **Mechanism**: The user message is embedded into a 384-dimensional vector (via `BAAI/bge-small-zh-v1.5`). RediSearch performs a KNN-1 cosine similarity query against stored embeddings.
+- **Threshold**: Cosine similarity >= **0.95** (configurable). A near-identical question returns the cached response even if wording differs slightly.
+- **Timeout**: 55ms HTTP budget from proxy to router; on timeout the layer is skipped.
+
+### L1 — User-Defined Rule Engine
+
+This is where **your custom routing rules** take effect. Rules are loaded into memory at startup and hot-reloaded via Redis Pub/Sub — matching is fully synchronous with **< 2ms P99 latency**.
+
+**Supported conditions (combinable with AND / OR):**
+
+| Condition | Description |
+|---|---|
+| `taskType` | Auto-detected task category (coding, translation, analysis, math, creative, chat, summarization, general) |
+| `keywords` | Case-insensitive substring match on the last user message |
+| `tokenCount` | Estimated token count within a min/max range |
+| `maxCost` | Input cost per million tokens <= threshold |
+| `maxLatency` | Provider average latency <= threshold |
+| `providerHealth` | Provider health status matches |
+
+Rules are evaluated in **priority descending** order (0–1000). The first match wins and returns the rule's `targetModel` plus an optional fallback chain of up to 3 models. You can create rules via the visual editor, natural language generator, or AI wizard (see [Rule Creation](#rule-creation--three-ways-to-build-your-routing-strategy) above).
+
+### L2 — Semantic Route
+
+- **Mechanism**: The last user message is embedded and compared against pre-configured route utterance embeddings (8 semantic categories, e.g. "code", "translation", "math"). Best cosine similarity match above **0.85** threshold wins.
+- **Timeout**: 55ms; on miss or timeout, passes to L3.
+- **Model mapping**: Each semantic category maps to a `provider/model` via `ROUTE_MODEL_MAP`.
+
+### L3 — Local Model Arbitration (Arch-Router)
+
+- **Mechanism**: Sends the user message to a small local LLM running on the host via Ollama (default: `fauxpaslife/arch-router:1.5b`, ~900MB). The model returns a JSON classification `{"category": "...", "confidence": ...}` that maps to a target model.
+- **Timeout**: 140ms read budget; on timeout, error, or unrecognized category → falls through to default model.
+- **No external calls**: Ollama runs on your host machine; the router accesses it via `host.docker.internal:11434`.
+
+### Fallback
+
+If all layers miss, the system selects the **first enabled model** from the database as the default target. A `L3_FALLBACK` counter is incremented asynchronously for monitoring via the dashboard.
+
+---
+
+## Architecture Overview
 
 ```mermaid
 graph TD
@@ -133,8 +239,6 @@ graph TD
     Proxy -.->|"async logging"| DB[("PostgreSQL")]
     Proxy -.->|"async caching"| Redis[("Redis")]
 ```
-
-> **L3 Arbitration** relies on a small model running on the host via Ollama (e.g. `fauxpaslife/arch-router:1.5b`). When rules and semantics can't determine the best target, the AI dynamically decides. On timeout or unavailability, it gracefully degrades to the default model.
 
 ---
 
@@ -229,8 +333,10 @@ When running `npm ci` in `proxy/` or `dashboard/`, the `.npmrc` file only affect
 
 | Dimension | Typical Cloud API Gateway | Smart Router Butler |
 |---|---|---|
-| **Data privacy** | Traffic routed through third parties — leak risk | **100% self-hosted**, data stays on your infrastructure |
-| **Routing logic** | Platform black-box, no user control | **L1/L2/L3 white-box**, transparent, configurable, explainable |
+| **Integration** | Requires dedicated plugins, browser extensions, or SDK wrappers per tool | **Standard OpenAI-compatible endpoint** — any tool that supports `base_url` + API key works instantly. No plugins needed. |
+| **Data privacy** | Traffic routed through third parties — leak risk | **100% self-hosted**, data stays on your local network |
+| **Routing logic** | Platform black-box, no user control | **L0–L3 white-box**, transparent, configurable, explainable |
+| **Rule customization** | Limited or no user-defined rules | Full visual editor + natural language + AI wizard for custom routing rules |
 | **Compliance** | Dependent on vendor terms, region-locked | **Deploy on your own network**, meets the strictest enterprise requirements |
 | **Cost control** | Platform fees or fixed monthly charges | **Zero platform fees**, route on-demand to maximize free/cheap model value |
 
