@@ -96,7 +96,7 @@ When using AI agents (OpenClaw, Cursor, Continue, etc.) and IDE-assisted coding 
 
 Click any category to browse screenshots.
 
-<details open>
+<details>
 <summary><b>📊 Dashboard Overview</b></summary>
 <br>
 <div align="center">

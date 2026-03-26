@@ -96,7 +96,7 @@
 
 点击分类展开浏览截图。
 
-<details open>
+<details>
 <summary><b>📊 控制台总览</b></summary>
 <br>
 <div align="center">
