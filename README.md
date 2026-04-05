@@ -445,7 +445,15 @@ npm run type-check && npm run lint
 
 ## 🗺️ Roadmap
 
-The following features are under consideration or active development:
+**Recently shipped — `20260405`**
+
+- Multimodal & generative traffic: modalities on `request_logs`, overview KPIs, proxy routes (`/v1/images/generations`, multimodal chat forwarding helpers).
+- **API Token (local key) dimension**: `apiTokenId` / `apiTokenName` on logs, CSV export, rules-hit filters, and cost aggregates.
+- **Dashboard Overview analytics**: dedicated API (`/api/stats/overview-analytics`) with trend & pie charts and filters (`dashboard/src/components/overview/*`).
+- **Thinking / reasoning mode**: model flags, rule `thinkingStrategy`, request log fields; OpenAI `reasoning_effort` mapping.
+- **Security**: Redis sliding-window rate limiting on the proxy ([SEC-003](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues/20)); npm `overrides` for audited transitive deps ([SEC-002](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues/21)).
+
+**Up next (backlog)**
 
 - [ ] Plugin system for custom routing strategies
 - [ ] Multi-user team collaboration with role-based access

@@ -445,7 +445,15 @@ npm run type-check && npm run lint
 
 ## 🗺️ 路线图
 
-以下功能正在规划或积极开发中：
+**近期已交付 — `20260405`**
+
+- **多模态与生成类流量**：`request_logs` 记录模态信息、总览 KPI；Proxy 增加图像生成等路由与多模态转发辅助（`proxy/src/routes/imageGenerations.ts`、`proxy/src/utils/multimodal.ts` 等）。
+- **API Token（本地 Key）维度**：日志与导出中的 `apiTokenName`、规则命中与统计按 Token 筛选与聚合。
+- **控制台总览分析**：独立统计 API（`/api/stats/overview-analytics`）及趋势图、饼图与筛选组件（`dashboard/src/components/overview/`）。
+- **思考 / 推理模式**：模型能力位、规则 `thinkingStrategy`、请求日志字段；OpenAI `reasoning_effort` 映射。
+- **安全**：Proxy Redis 滑动窗口限流（[SEC-003](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues/20)）；dashboard/proxy 通过 `overrides` 处理 npm audit 传递依赖（[SEC-002](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues/21)）。
+
+**后续规划（待办）**
 
 - [ ] 自定义路由策略插件系统
 - [ ] 多用户团队协作与角色权限管理
