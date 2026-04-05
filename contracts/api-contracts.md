@@ -507,6 +507,7 @@ Next.js API Routes，供 Dashboard 前端调用。需登录态（Better Auth ses
 | GET | `/api/stats/circuit-breakers` | 当前熔断状态 |
 | GET | `/api/stats/rules-hit` | 规则命中频率统计；支持 `?apiTokenId=` 按 Token 筛选（V5-17）：传入时 hitCount / avgLatencyMs / lastHitAt 均从 `request_logs` 聚合，而非 `rules` 表全局值 |
 | GET | `/api/stats/latency-percentiles` | 按 `routingLayer` 聚合近 N 小时 `request_logs.latencyMs` 的 P50/P95/P99；查询参数 **`hours`**（默认 24，1～168）；**`format=json`**（默认）或 **`format=csv`** 导出（**ISSUE-PL-05**） |
+| GET | `/api/stats/overview-analytics` | 多维使用分析（V5-13 趋势图 + V5-14 饼图数据源）；支持 `granularity`(hour/day/week/month)、`from`/`to`、`providerIds`/`models`/`routingLayers`/`ruleIds` 筛选、`metrics`(requests/tokens/cost/saved/layerHits/ruleHits)；返回 `{ series, totals, filters }` |
 
 ### 设置
 

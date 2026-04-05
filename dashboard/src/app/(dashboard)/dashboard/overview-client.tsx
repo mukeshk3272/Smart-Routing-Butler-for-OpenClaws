@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
+import { AnalyticsSection } from "@/components/overview/analytics-section";
 
 interface OverviewData {
   todayRequests: number;
@@ -242,6 +243,9 @@ export function DashboardOverviewClient() {
           </div>
         )}
       </div>
+
+      {/* 使用分析（V5-13 趋势图 + V5-14 饼图） */}
+      <AnalyticsSection />
     </div>
   );
 }
